@@ -1,0 +1,81 @@
+package com.expenses;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+
+public class ExpensesActivity extends Activity implements OnClickListener{
+	Button btnAddPeople;
+	TableLayout tblPersons;
+//	EditText textPerson;
+	Button btnContinue;
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+
+		tblPersons = (TableLayout) findViewById(R.id.tblPersons);
+		btnAddPeople = (Button) findViewById(R.id.btnAddPeople);
+		btnContinue = (Button) findViewById(R.id.btnContinue);
+		textPerson = (EditText) findViewById(R.id.textPerson);
+
+		Log.d("btnAddPeople", "btnAddPeople::"+btnAddPeople);
+		System.out.println("btnAddPeople::"+btnAddPeople);
+		btnAddPeople.setOnClickListener(this);
+		btnContinue.setOnClickListener(this);
+
+	}
+
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnAddPeople:
+
+			TableRow tr = new TableRow(this);
+			tr.setId(1);
+
+			EditText editText = new EditText(this);
+			editText.setId(200);
+			editText.setText(textPerson.getText().toString());
+			//			labelTV.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+
+			tr.addView(editText);
+
+			tblPersons.addView(tr);
+
+			break;
+		case R.id.btnContinue:
+
+			//			int rows = tblPersons.getChildCount();
+			String names = "";
+
+			for (int i = 0; i < tblPersons.getChildCount(); i++) {
+				TableRow row = (TableRow) tblPersons.getChildAt(i);
+				names = names + ((EditText)(row.getChildAt(0))).getText().toString();
+
+				if(i < tblPersons.getChildCount()-1){
+					names = names + ",";
+				}
+			}
+
+			System.out.println("!!!!!!!!!!names:"+ names);
+
+			Intent intentExpenses = new Intent();
+			intentExpenses.setClassName("com.expenses", "com.expenses.ExpensesShareActivity");
+			intentExpenses.putExtra("com.com.expenses.PersonNames", names); 
+			startActivity(intentExpenses);
+
+			break;
+		default:
+			break;
+		}		
+	}
+}

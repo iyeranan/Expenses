@@ -1,0 +1,11 @@
+package com.expenses.entity;
+
+import java.io.Serializable;
+
+public class NetExpenses implements Serializable{
+	private static final long serialVersionUID = -1274177016556700720L;
+	
+	private String fromName = "";
+	
+
+}

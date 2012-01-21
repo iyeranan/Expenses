@@ -1,0 +1,8 @@
+1326594028236	Rename local variable 'labelTV'
+1326654913613	Extracts string 'null' into R.string.netExpenses
+1326656019634	Rename resource 'netExpenses.xml'
+1326656288545	Extract local variable 'fetchResults'
+1326657844224	Rename field 'tblExpenses'
+1326657917119	Extract local variable 'serializableExtra'
+1326738056804	Extract local variable 'layoutParams'
+1326751521420	Extract local variable 'name'

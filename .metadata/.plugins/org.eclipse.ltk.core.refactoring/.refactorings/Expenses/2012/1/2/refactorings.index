@@ -1,0 +1,11 @@
+1325981638234	Extracts string 'null' into R.string.ExpensesShare
+1325983180957	Extract local variable 'intent'
+1325983213058	Extract local variable 'stringExtra'
+1326053924637	Extract local variable 'array'
+1326061425447	Extract local variable 'rows'
+1326061495261	Rename field 'btnContinue'
+1326061559645	Extract local variable 'childAt'
+1326061856280	Extract local variable 'amount'
+1326071121360	Extract local variable 'selected'
+1326079142143	Rename package 'com.expenses.process'
+1326079499564	Rename local variable 'spender'

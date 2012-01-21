@@ -1,0 +1,70 @@
+package com.expenses;
+
+import java.util.ArrayList;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+import android.widget.TableRow.LayoutParams;
+
+import com.expenses.entity.NetExpenses;
+
+public class NetExpensesActivity extends Activity implements OnClickListener{
+
+	TableLayout tblNetExpenses;
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.netexpenses);
+
+		tblNetExpenses = (TableLayout) findViewById(R.id.tblNetExpenses);
+
+		Intent intent = getIntent();
+		ArrayList<NetExpenses> netExpenses = (ArrayList<NetExpenses>) intent.getSerializableExtra("com.expenses.NetExpensesList");
+
+		if(netExpenses !=null && netExpenses.size()>0) {
+			for (NetExpenses netExpense : netExpenses) {
+				TextView fromName = new TextView(this);
+				fromName.setText(netExpense.getFromName());
+				LayoutParams layoutParams = new LayoutParams(1,LayoutParams.WRAP_CONTENT);
+				layoutParams.setMargins(arg0, arg1, arg2, arg3);
+				fromName.setLayoutParams(layoutParams);
+//				fromName.setTextColor(ColorStateList.valueOf(color)))
+
+				android:layout_margin="1dp"
+			    android:gravity="center_horizontal"
+			    android:layout_weight="1"
+			    android:background="#ffcccccc"
+			    android:text="Payer" />
+				
+				TextView amount = new TextView(this);
+				amount.setText(netExpense.getAmount().toString());
+				amount.setLayoutParams(layoutParams);
+
+				TextView toName = new TextView(this);
+				toName.setText(netExpense.getToName());
+				toName.setLayoutParams(layoutParams);
+
+				TableRow tr = new TableRow(this);
+				tr.addView(fromName);
+				tr.addView(toName);
+				tr.addView(amount);
+
+				tblNetExpenses.addView(tr);
+			}
+		} else {
+
+		}
+	}
+
+	public void onClick(View v) {
+	}
+}

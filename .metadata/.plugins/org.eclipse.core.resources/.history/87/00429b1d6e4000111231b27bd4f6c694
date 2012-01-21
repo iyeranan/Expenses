@@ -1,0 +1,59 @@
+package com.expenses;
+
+import java.util.ArrayList;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
+import com.expenses.entity.NetExpenses;
+
+public class NetExpensesActivity extends Activity implements OnClickListener{
+
+	TableLayout tblNetExpenses;
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.netexpenses);
+
+		tblNetExpenses = (TableLayout) findViewById(R.id.tblNetExpenses);
+
+		Intent intent = getIntent();
+		ArrayList<NetExpenses> netExpenses = (ArrayList<NetExpenses>) intent.getSerializableExtra("com.expenses.NetExpensesList");
+
+		if(netExpenses !=null && netExpenses.size()>0) {
+			for (NetExpenses netExpense : netExpenses) {
+				TextView fromName = new TextView(this);
+				fromName.setText(netExpense.getFromName());
+				fromName.setLayoutParams((new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT)));
+
+				TextView amount = new TextView(this);
+				amount.setText(netExpense.getAmount().toString());
+				amount.setLayoutParams((new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT)));
+				
+				TextView toName = new TextView(this);
+				toName.setText(netExpense.getToName());
+				toName.setLayoutParams((new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT)));
+				
+				TableRow tr = new TableRow(this);
+				tr.addView(fromName);
+				tr.addView(toName);
+				tr.addView(amount);
+
+				tblNetExpenses.addView(tr);
+			}
+		} else {
+
+		}
+	}
+
+	public void onClick(View v) {
+	}
+}

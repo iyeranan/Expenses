@@ -1,0 +1,100 @@
+package com.expenses;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
+import com.expenses.MultiSpinner.MultiSpinnerListener;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.InputType;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+
+public class ExpensesShareActivity extends Activity implements OnClickListener{
+
+	Button btnAddExpense;
+	TableLayout tblExpenses;
+	Button btnContinue;
+	String persons;
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.shares);
+
+		btnAddExpense = (Button) findViewById(R.id.btnAddExpense);
+		tblExpenses = (TableLayout) findViewById(R.id.tblExpenses);
+		btnContinue = (Button) findViewById(R.id.btnAddExpense); 
+
+		btnAddExpense.setOnClickListener(this);
+		btnContinue.setOnClickListener(this);
+
+		Intent intent = getIntent();
+		persons = intent.getStringExtra("com.com.expenses.PersonNames");
+		System.out.println("persons in intent:"+persons);
+
+
+	}
+
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnAddExpense:
+			TableRow tr = new TableRow(this);
+			tr.setId(1);
+
+			EditText txtAmount = new EditText(this);
+			txtAmount.setId(200);
+			txtAmount.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
+			Spinner sp = new Spinner(this);
+			sp.setId(100);
+			sp.setPrompt("Spender");
+
+			StringTokenizer st = new StringTokenizer(persons, ",");
+			List<String> personList = new ArrayList<String>();
+			while (st.hasMoreTokens()) {
+				personList.add(st.nextToken());
+			}
+			String[] personArray = personList.toArray(new String[personList.size()]);
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, personArray);
+			adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			sp.setAdapter(adapter);
+
+			MultiSpinner msp = new MultiSpinner(this); 
+			msp.setId(100);
+			msp.setPrompt("Sharers");
+			msp.setItems(personList, "Sharers", new MultiSpinnerListener() {
+				public void onItemsSelected(boolean[] selected) {
+					
+				}
+			});
+
+			
+			tr.addView(txtAmount);
+			tr.addView(sp);
+
+			tblExpenses.addView(tr);
+
+			Button btnPeople = new Button(this);
+			btnPeople.setText("");
+
+			break;
+		case R.id.btnContinue:
+
+
+			break;
+		default:
+			break;
+		}		
+	}
+}

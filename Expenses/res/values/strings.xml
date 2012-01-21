@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="addPeople">Add People</string>
+    <string name="app_name">Expenses</string>
+    <string name="addExpenses">Add Expenses</string>
+    <string name="ExpensesShare">ExpensesShare</string>
+    <string name="netExpenses">Net Expenses</string>
+</resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="fill_parent" android:layout_width="fill_parent" android:id="@+id/widget54">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="fill_parent" android:layout_width="fill_parent">
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" android:text="@string/netExpenses"/>
+<TableLayout
+  android:id="@+id/tblNetExpenses"
+  android:layout_width="fill_parent"
+  android:layout_marginRight="2dp"
+  android:layout_marginLeft="2dp"
+  android:layout_height="wrap_content"
+  android:background="@android:color/black">
+  <TableRow android:id="@+id/trHeaderNetExpenses">
+   <TextView
+    android:textColor="@android:color/black"
+    android:layout_margin="1dp"
+    android:gravity="center_horizontal"
+    android:layout_weight="1"
+    android:background="#ffcccccc"
+    android:text="Payer" />
+   <TextView
+    android:textColor="@android:color/black"
+    android:gravity="center_horizontal"
+    android:layout_weight="1"
+    android:layout_margin="1dp"
+    android:background="#ffcccccc"
+    android:text="Payee" />
+   <TextView
+    android:textColor="@android:color/black"
+    android:gravity="center_horizontal"
+    android:layout_weight="1"
+    android:layout_margin="1dp"
+    android:background="#ffcccccc"
+    android:text="Amount" />
+  </TableRow>
+ </TableLayout></LinearLayout>
+</ScrollView>
