@@ -13,7 +13,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ExpensesShareActivity" android:label="@string/ExpensesShare" android:windowSoftInputMode="stateAlwaysVisible"></activity>
+        <activity android:name=".ExpensesShareActivity" android:label="@string/ExpensesShare" android:windowSoftInputMode="stateAlwaysVisible">
+        </activity>
         <activity android:name="NetExpensesActivity" android:label="@string/netExpenses" android:windowSoftInputMode="stateAlwaysVisible"></activity>
 
     </application>
